@@ -11,7 +11,7 @@ class ViewModel: ObservableObject {
     private static let defaultText = "Try fetching some text!"
     @Published var textToDisplay: String = ViewModel.defaultText
     
-    func fetchTextOne() {
+    func fetchTextOne() async throws {
         self.textToDisplay = "Text one"
     }
     
