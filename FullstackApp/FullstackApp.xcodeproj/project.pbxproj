@@ -14,6 +14,7 @@
 		1A68ABA12BC700DF0067C511 /* TextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A68ABA02BC700DF0067C511 /* TextModel.swift */; };
 		1A68ABA32BC7039C0067C511 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A68ABA22BC7039C0067C511 /* ViewModel.swift */; };
 		1A68ABA52BC735A80067C511 /* IPConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A68ABA42BC735A80067C511 /* IPConst.swift */; };
+		1A68ABA72BC73AB30067C511 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A68ABA62BC73AB30067C511 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		1A68ABA02BC700DF0067C511 /* TextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModel.swift; sourceTree = "<group>"; };
 		1A68ABA22BC7039C0067C511 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1A68ABA42BC735A80067C511 /* IPConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPConst.swift; sourceTree = "<group>"; };
+		1A68ABA62BC73AB30067C511 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				1A68AB982BC6FF890067C511 /* Preview Content */,
 				1A68ABA02BC700DF0067C511 /* TextModel.swift */,
 				1A68ABA22BC7039C0067C511 /* ViewModel.swift */,
+				1A68ABA62BC73AB30067C511 /* NetworkError.swift */,
 			);
 			path = FullstackApp;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				1A68ABA52BC735A80067C511 /* IPConst.swift in Sources */,
 				1A68ABA12BC700DF0067C511 /* TextModel.swift in Sources */,
 				1A68AB952BC6FF880067C511 /* ContentView.swift in Sources */,
+				1A68ABA72BC73AB30067C511 /* NetworkError.swift in Sources */,
 				1A68ABA32BC7039C0067C511 /* ViewModel.swift in Sources */,
 				1A68AB932BC6FF880067C511 /* FullstackAppApp.swift in Sources */,
 			);
