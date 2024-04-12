@@ -6,6 +6,7 @@
 //
 
 enum NetworkError: Error {
+    case invalidEndpoint
     case invalidURL
     case invalidResponse
     case invalidData

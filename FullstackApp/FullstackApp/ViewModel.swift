@@ -51,10 +51,9 @@ class ViewModel: ObservableObject {
     
     private func requestTextFor(id: String) async throws -> TextModel {
         let endpoint = "http://\(currentIp):8081/get"
-        guard let url = URL(string: endpoint) else { throw NetworkError.invalidURL }
-        var request = URLRequest(url: url)
-        request.setValue(id, forHTTPHeaderField: TextModel.CodingKeys._id.rawValue)
-        request.httpMethod = "GET"
+        
+        let request = try self.createGetRequest(endpoint: endpoint, 
+                                                queryItems: [URLQueryItem(name: TextModel.CodingKeys._id.rawValue, value: id)])
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
@@ -69,9 +68,21 @@ class ViewModel: ObservableObject {
         }
     }
     
+    private func createGetRequest(endpoint: String, queryItems: [URLQueryItem]) throws -> URLRequest {
+        guard var urlComponents = URLComponents(string: endpoint) else { throw NetworkError.invalidEndpoint }
+        urlComponents.queryItems = queryItems
+        guard let url = urlComponents.url else { throw NetworkError.invalidURL }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HttpMethod.GET.rawValue
+        return request
+    }
+    
     private func getErrorText(for error: Error) -> String {
         guard let networkError = error as? NetworkError else { return "Unknown error" }
         switch networkError {
+        case .invalidEndpoint:
+            return "Invalid endpoint"
         case .invalidURL:
             return "Invalid URL"
         case .invalidResponse:
@@ -107,15 +118,21 @@ class ViewModel: ObservableObject {
     
     private func updateText(id: String, newText: String) async throws {
         let endpoint = "http://\(currentIp):8081/update"
-        guard let url = URL(string: endpoint) else { throw NetworkError.invalidURL }
-        let jsonData = try JSONEncoder().encode(TextModel(id: id, text: newText))
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonData
-        request.httpMethod = "POST"
+        let request = try self.createPostRequest(endpoint: endpoint,
+                                     requestBody: TextModel(id: id, text: newText))
         
         let (_, response) = try await URLSession.shared.data(for: request)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw NetworkError.invalidResponse }
+    }
+    
+    private func createPostRequest(endpoint: String, requestBody: Encodable) throws -> URLRequest {
+        guard let url = URL(string: endpoint) else { throw NetworkError.invalidURL }
+        var request = URLRequest(url: url)
+        let jsonData = try JSONEncoder().encode(requestBody)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        request.httpMethod = HttpMethod.POST.rawValue
+        return request
     }
     
 }
