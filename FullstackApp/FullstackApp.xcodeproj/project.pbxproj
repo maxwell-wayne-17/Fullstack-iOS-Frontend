@@ -61,15 +61,13 @@
 		1A68AB912BC6FF880067C511 /* FullstackApp */ = {
 			isa = PBXGroup;
 			children = (
-				1A68ABA42BC735A80067C511 /* IPConst.swift */,
-				1A68AB922BC6FF880067C511 /* FullstackAppApp.swift */,
-				1A68AB942BC6FF880067C511 /* ContentView.swift */,
 				1A68AB962BC6FF890067C511 /* Assets.xcassets */,
+				1A68ABAA2BC9A4930067C511 /* Constants */,
+				1A68AB942BC6FF880067C511 /* ContentView.swift */,
+				1A68AB922BC6FF880067C511 /* FullstackAppApp.swift */,
 				1A68AB982BC6FF890067C511 /* Preview Content */,
 				1A68ABA02BC700DF0067C511 /* TextModel.swift */,
 				1A68ABA22BC7039C0067C511 /* ViewModel.swift */,
-				1A68ABA82BC99CFB0067C511 /* HttpMethod.swift */,
-				1A68ABA62BC73AB30067C511 /* NetworkError.swift */,
 			);
 			path = FullstackApp;
 			sourceTree = "<group>";
@@ -80,6 +78,16 @@
 				1A68AB992BC6FF890067C511 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1A68ABAA2BC9A4930067C511 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				1A68ABA82BC99CFB0067C511 /* HttpMethod.swift */,
+				1A68ABA42BC735A80067C511 /* IPConst.swift */,
+				1A68ABA62BC73AB30067C511 /* NetworkError.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
