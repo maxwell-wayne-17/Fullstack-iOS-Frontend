@@ -108,10 +108,10 @@ class ViewModel: ObservableObject {
     private func updateText(id: String, newText: String) async throws {
         let endpoint = "http://\(currentIp):8081/update"
         guard let url = URL(string: endpoint) else { throw NetworkError.invalidURL }
+        let jsonData = try JSONEncoder().encode(TextModel(id: id, text: newText))
         var request = URLRequest(url: url)
-        // TODO: Try and serialize a text model for this
-        request.setValue(id, forHTTPHeaderField: TextModel.CodingKeys._id.rawValue)
-        request.setValue(newText, forHTTPHeaderField: TextModel.CodingKeys.text.rawValue)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
         request.httpMethod = "POST"
         
         let (_, response) = try await URLSession.shared.data(for: request)

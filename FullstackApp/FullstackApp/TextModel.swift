@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TextModel: Decodable {
+struct TextModel: Codable {
     let _id: String
     let text: String
     
